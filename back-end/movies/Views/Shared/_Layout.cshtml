@@ -1,0 +1,56 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Онлайн филми</title>
+    <base href="/">
+    <link rel="icon" type="image/x-icon" href="dist/favicon.ico">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        #movie-detail{margin:20px 30px}#movie-detail #movie-image{width:100%}#movie-detail #movie-source iframe{margin-top:20px;width:644px;height:364px}.movieThumbnail{cursor:pointer}.nanobar{width:100%;height:4px;z-index:9999;top:0}.bar{width:0;height:100%;-webkit-transition:height .3s;transition:height .3s;background:#337ab7}
+/*# sourceMappingURL=styles.0b82ff14426234a58ac2.bundle.map*/
+    </style>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" />
+</head>
+<body>
+    <script>
+    var nanobarLoader = (function () {
+      function Loader() {
+
+      }
+
+      Loader.prototype = {
+        start: function () {
+          NProgress.start();
+        },
+        done: function () {
+          NProgress.done();
+        }
+      };
+
+      return Loader;
+    }());
+
+    var loader = new nanobarLoader();
+    </script>
+    @RenderBody()
+    @Scripts.Render("~/bundles/angular")
+
+    <script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-89640620-1', 'auto');
+    ga('send', 'pageview');
+
+    </script>
+</body>
+</html>
+

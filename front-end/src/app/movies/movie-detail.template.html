@@ -1,0 +1,53 @@
+<div *ngIf="movie" id="movie-detail" class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{ movie.Title }}</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="http://online-filmite.info/{{ movie.ImageURL }}" id="movie-image" />
+            </div>
+            <div class="col-md-6">
+                <div id="movie-content">
+                    <ul class="list-group">
+                        <li class="list-group-item active">
+                            Актьори:
+                        </li>
+                        <li *ngFor="let actor of actors" class="list-group-item">
+                            <a routerLink="/actor/{{ actor.Id }}">{{ actor.Name }}</a>
+                        </li>
+                        <li class="list-group-item active">
+                            Жанр:
+                        </li>
+                        <li *ngFor="let genre of genres" class="list-group-item">
+                            <a routerLink="/genre/{{ genre.Id }}">{{ genre.Name }}</a>
+                        </li>
+                        <li class="list-group-item active">
+                            Държава:
+                        </li>
+                        <li *ngFor="let country of countries" class="list-group-item">
+                            <a routerLink="/country/{{ country.Id }}">{{ country.Name }}</a>
+                        </li>
+                        <li class="list-group-item active">
+                            Времетраене: {{ movie.Timespan }}
+                        </li>
+                        <li class="list-group-item active">
+                            Година: {{ movie.Year }}
+                        </li>
+                        <li class="list-group-item active">
+                            Гледания: {{ movie.Views }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="movie-source">
+                    <iframe [src]="sanitize(movie.Source)" allowfullscreen="allowfullscreen" class="center-block"></iframe>
+                </div>
+                <button (click)="gotoMovies()" class="btn btn-primary">Назад</button> 
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,118 @@
+<div id="movie-detail" class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title">
+        <div *ngIf="genre">
+          <h1 style="margin: 0">{{ genre.Name }}</h1>
+        </div>
+        <div *ngIf="!genre">
+          <h1 style="margin: 0" *ngIf="search == undefined">
+            Филми
+          </h1>
+          <h1 style="margin: 0" *ngIf="search != undefined">
+            Филми ({{ search }})
+          </h1>
+        </div>
+      </h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-4">
+        <div *ngFor="let movie of movies; let i = index" (click)="onSelect(movie)">
+          <div class="box" *ngIf="i % 3 == 0">
+            <div class="thumbnail">
+              <img src="http://online-filmite.info/{{ movie.ImageURL }}" class="movieThumbnail" />
+              <div class="caption">
+                <h3>{{ movie.Title }}</h3>
+                <a routerLink="/genre/{{ genre.Id }}" *ngFor="let genre of movie.Genres" class="badge" style="margin-right: 3px">{{ genre.Name }}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div *ngFor="let movie of movies; let i = index" (click)="onSelect(movie)">
+          <div class="box" *ngIf="i % 3 == 1">
+            <div class="thumbnail">
+              <img src="http://online-filmite.info/{{ movie.ImageURL }}" class="movieThumbnail" />
+              <div class="caption">
+                <h3>{{ movie.Title }}</h3>
+                <a routerLink="/genre/{{ genre.Id }}" *ngFor="let genre of movie.Genres" class="badge" style="margin-right: 3px">{{ genre.Name }}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div *ngFor="let movie of movies; let i = index" (click)="onSelect(movie)">
+          <div class="box" *ngIf="i % 3 == 2">
+            <div class="thumbnail">
+              <img src="http://online-filmite.info/{{ movie.ImageURL }}" class="movieThumbnail" />
+              <div class="caption">
+                <h3>{{ movie.Title }}</h3>
+                <a routerLink="/genre/{{ genre.Id }}" *ngFor="let genre of movie.Genres" class="badge" style="margin-right: 3px">{{ genre.Name }}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav aria-label="Page navigation" style="text-align: center;">
+      <ul class="pagination pagination-lg" *ngIf="genreId == null">
+        <li>
+          <a routerLink="/movies/1" aria-label="First" *ngIf="currentPage > 1">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/movies/{{ currentPage - 1 }}" *ngIf="currentPage > 1" aria-label="Previous">
+            <span aria-hidden="true">&lsaquo;</span>
+          </a>
+        </li>
+        <li><a routerLink="/movies/{{ currentPage - 2 }}" *ngIf="currentPage - 1 > 1">{{ currentPage - 2 }}</a></li>
+        <li><a routerLink="/movies/{{ currentPage - 1 }}" *ngIf="currentPage > 1">{{ currentPage - 1 }}</a></li>
+        <li class="active" *ngIf="movies != undefined && movies.length > 0"><a routerLink="/movies/{{ currentPage }}">{{ currentPage }}</a></li>
+        <li><a routerLink="/movies/{{ currentPage + 1 }}" *ngIf="lastPage > currentPage">{{ currentPage + 1 }}</a></li>
+        <li><a routerLink="/movies/{{ currentPage + 2 }}" *ngIf="lastPage > currentPage + 1">{{ currentPage + 2 }}</a></li>
+        <li>
+          <a routerLink="/movies/{{ currentPage + 1 }}" *ngIf="lastPage > currentPage" aria-label="Next">
+            <span aria-hidden="true">&rsaquo;</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/movies/{{ lastPage }}" *ngIf="lastPage > currentPage" aria-label="Last">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+
+      <ul class="pagination pagination-lg" *ngIf="genreId != null">
+        <li>
+          <a routerLink="/genre/{{ genreId }}/1" aria-label="First" *ngIf="currentPage > 1">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/genre/{{ genreId }}/{{ currentPage - 1 }}" *ngIf="currentPage > 1" aria-label="Previous">
+            <span aria-hidden="true">&lsaquo;</span>
+          </a>
+        </li>
+        <li><a routerLink="/genre/{{ genreId }}/{{ currentPage - 2 }}" *ngIf="currentPage - 1 > 1">{{ currentPage - 2 }}</a></li>
+        <li><a routerLink="/genre/{{ genreId }}/{{ currentPage - 1 }}" *ngIf="currentPage > 1">{{ currentPage - 1 }}</a></li>
+        <li class="active"><a routerLink="/movgenre/{{ genreId }}ies/{{ currentPage }}">{{ currentPage }}</a></li>
+        <li><a routerLink="/genre/{{ genreId }}/{{ currentPage + 1 }}" *ngIf="lastPage > currentPage">{{ currentPage + 1 }}</a></li>
+        <li><a routerLink="/genre/{{ genreId }}/{{ currentPage + 2 }}" *ngIf="lastPage > currentPage + 1">{{ currentPage + 2 }}</a></li>
+        <li>
+          <a routerLink="/genre/{{ genreId }}/{{ currentPage + 1 }}" *ngIf="lastPage > currentPage" aria-label="Next">
+            <span aria-hidden="true">&rsaquo;</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/genre/{{ genreId }}/{{ lastPage }}" *ngIf="lastPage > currentPage" aria-label="Last">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    </div>
+</div>
